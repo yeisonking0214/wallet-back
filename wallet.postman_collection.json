@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "85a67b9b-1b07-4475-b4fe-617757d44ab9",
+		"name": "wallet",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Validar Pago",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"identification\": \"9617387128\",\n    \"sessionId\": \"lbCday-PDwmXzU69RReiTKbsyUyGP550\",\n    \"token\": \"249749\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/users/payment-validation",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"payment-validation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Solicitud Pago",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"identification\": \"9617387128\",\n    \"phone\": \"3123742783\",\n    \"value\": 500\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/users/payment-request",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"payment-request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recargar Billetera",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"identification\": \"9617387128\",\n    \"phone\": \"3123742783\",\n    \"value\": 1000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/users/recharge-wallet",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"recharge-wallet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"identification\": \"9617387128\",\n    \"fullName\": \"Filomena O\",\n    \"email\": \"filomena.ordo0214@gmail.com\",\n    \"phone\": \"3123742783\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Saldo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/users/balance?identification=9517387128&phone=3123742785",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"balance"
+					],
+					"query": [
+						{
+							"key": "identification",
+							"value": "9517387128"
+						},
+						{
+							"key": "phone",
+							"value": "3123742785"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

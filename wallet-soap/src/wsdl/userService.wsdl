@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+    name="UserService"
+    targetNamespace="http://example.com/myservice"
+	xmlns:tns="http://example.com/myservice"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/">
+	<types>
+		<xsd:schema targetNamespace="http://example.com/myservice" elementFormDefault="qualified">
+			<xsd:complexType name="BaseResponse">
+				<xsd:sequence>
+					<xsd:element name="success" type="xsd:boolean"/>
+					<xsd:element name="cod_error" type="xsd:string"/>
+					<xsd:element name="message_error" type="xsd:string"/>
+					<xsd:element name="data" type="xsd:anyType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="GetBalanceRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="identification" type="xsd:string"/>
+						<xsd:element name="phone" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="GetBalanceResponse" type="tns:BaseResponse"/>
+			<xsd:element name="CreateUserRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="identification" type="xsd:string"/>
+						<xsd:element name="fullname" type="xsd:string"/>
+						<xsd:element name="email" type="xsd:string"/>
+						<xsd:element name="phone" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="CreateUserResponse" type="tns:BaseResponse"/>
+			<xsd:element name="RechargeWalletRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="identification" type="xsd:string"/>
+						<xsd:element name="phone" type="xsd:string"/>
+						<xsd:element name="value" type="xsd:double"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="RechargeWalletResponse" type="tns:BaseResponse"/>
+			<xsd:element name="PaymentRequestRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="identification" type="xsd:string"/>
+						<xsd:element name="Value" type="xsd:double"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="PaymentRequestResponse" type="tns:BaseResponse"/>
+			<xsd:element name="PaymentValidationRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="indentification" type="xsd:string"/>
+						<xsd:element name="sessionId" type="xsd:string"/>
+						<xsd:element name="token" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="PaymentValidationResponse" type="tns:BaseResponse"/>
+		</xsd:schema>
+	</types>
+	<message name="GetBalanceInputMsg">
+		<part name="parameters" element="tns:GetBalanceRequest"/>
+	</message>
+	<message name="GetBalanceOutputMsg">
+		<part name="parameters" element="tns:GetBalanceResponse"/>
+	</message>
+	<message name="CreateUserInputMsg">
+		<part name="parameters" element="tns:CreateUserRequest"/>
+	</message>
+	<message name="CreateUserOutputMsg">
+		<part name="parameters" element="tns:CreateUserResponse"/>
+	</message>
+	<message name="RechargeWalletInputMsg">
+		<part name="parameters" element="tns:RechargeWalletRequest"/>
+	</message>
+	<message name="RechargeWalletOutputMsg">
+		<part name="parameters" element="tns:RechargeWalletResponse"/>
+	</message>
+	<message name="PaymentRequestInputMsg">
+		<part name="parameters" element="tns:PaymentRequestRequest"/>
+	</message>
+	<message name="PaymentRequestOutputMsg">
+		<part name="parameters" element="tns:PaymentRequestResponse"/>
+	</message>
+	<message name="PaymentValidationInputMsg">
+		<part name="parameters" element="tns:PaymentValidationRequest"/>
+	</message>
+	<message name="PaymentValidationOutputMsg">
+		<part name="parameters" element="tns:PaymentValidationResponse"/>
+	</message>
+	<portType name="UserPortType">
+		<operation name="GetBalance">
+			<input message="tns:GetBalanceInputMsg"/>
+			<output message="tns:GetBalanceOutputMsg"/>
+		</operation>
+		<operation name="CreateUser">
+			<input message="tns:CreateUserInputMsg"/>
+			<output message="tns:CreateUserOutputMsg"/>
+		</operation>
+		<operation name="RechargeWallet">
+			<input message="tns:RechargeWalletInputMsg"/>
+			<output message="tns:RechargeWalletOutputMsg"/>
+		</operation>
+		<operation name="PaymentRequest">
+			<input message="tns:PaymentRequestInputMsg"/>
+			<output message="tns:PaymentRequestOutputMsg"/>
+		</operation>
+		<operation name="PaymentValidation">
+			<input message="tns:PaymentValidationInputMsg"/>
+			<output message="tns:PaymentValidationOutputMsg"/>
+		</operation>
+	</portType>
+	<binding name="UserBinding" type="tns:UserPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="GetBalance">
+			<soap:operation soapAction="GetBalance"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="CreateUser">
+			<soap:operation soapAction="CreateUser"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="RechargeWallet">
+			<soap:operation soapAction="RechargeWallet"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PaymentRequest">
+			<soap:operation soapAction="PaymentRequest"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PaymentValidation">
+			<soap:operation soapAction="PaymentValidation"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="UserService">
+		<port name="UserPort" binding="tns:UserBinding">
+			<soap:address location="http://localhost:8000/wsdl"/>
+		</port>
+	</service>
+</definitions>
